@@ -18,6 +18,6 @@ Comprobamos la instalación:
 /var/www/admin
 _Propiedad para www-data_
 
-**Clientes**
+**Clientes:**
 /var/www/clientes
 _Propiedad para www-data_
