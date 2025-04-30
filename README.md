@@ -10,6 +10,7 @@ GuardianBackupVPN es un sistema seguro de copias de seguridad y de recuperación
 
 # Objetivos
 **Objetivo General**
+
 Desarrollar GuardianBackupVPN, un sistema seguro de copias de seguridad y recuperación de datos que permita a los clientes gestionar sus backups de manera segura y eficiente mediante una conexión VPN.
 
 **Objetivos Específicos**
