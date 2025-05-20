@@ -40,8 +40,8 @@ Desarrollar _GuardianBackupVPN_, una solución integral para la gestión de copi
 
 En la era digital, la **gestión segura de los datos** se ha convertido en una necesidad crítica tanto para usuarios individuales como para organizaciones. La pérdida de información puede tener consecuencias graves, desde pérdidas personales hasta daños financieros y reputacionales para empresas.
 
-_**GuardianBackupVPN**_ nace como respuesta a esta necesidad, ofreciendo una solución **segura**, **eficiente** y **accesible** para la creación, gestión y recuperación de copias de seguridad, aprovechando la potencia de herramientas de código abierto y tecnologías de red modernas.
+_**GuardianBackupVPN**_ nace como respuesta a esta necesidad, ofreciendo una solución **segura**, **eficiente** y **accesible** para la creación, gestión y recuperación de copias de seguridad.
 
 ---
 
-✅ Este proyecto combina aspectos clave de la **administración de sistemas**, **seguridad informática** y **automatización**, reflejando competencias esenciales del perfil profesional de un técnico en Administración de Sistemas Informáticos y Redes.
+✅ Este proyecto combina aspectos clave de la **administración de sistemas**, **seguridad informática** y **automatización**, reflejando competencias esenciales del perfil profesional de un _técnico en Administración de Sistemas Informáticos y Redes._
