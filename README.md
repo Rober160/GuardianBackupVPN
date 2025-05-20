@@ -44,4 +44,4 @@ _**GuardianBackupVPN**_ nace como respuesta a esta necesidad, ofreciendo una sol
 
 ---
 
-✅ Este proyecto combina aspectos clave de la **administración de sistemas**, **seguridad informática** y **automatización**, reflejando competencias esenciales del perfil profesional de un técnico en sistemas y redes.
+✅ Este proyecto combina aspectos clave de la **administración de sistemas**, **seguridad informática** y **automatización**, reflejando competencias esenciales del perfil profesional de un técnico en Administración de Sistemas Informáticos y Redes.
