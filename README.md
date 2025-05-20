@@ -32,7 +32,7 @@ Desarrollar _GuardianBackupVPN_, una solución integral para la gestión de copi
    - Panel de administración
    - Panel de cliente
 6. 🔁 Automatizar la gestión de usuarios, repositorios y logs mediante **cron** y **systemd**.
-7. ♻️ Asegurar la **recuperación efectiva de los datos** en caso de pérdida.
+7. ♻️ Asegurar la **recuperación efectiva de los datos**.
 
 ---
 
