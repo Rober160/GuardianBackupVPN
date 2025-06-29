@@ -1,15 +1,31 @@
 # WireGuard VPN
 
-Configuración VPN WireGuard para las comunicaciones entre Servidor-Cliente.
+Configuración VPN WireGuard para las comunicaciones entre Servidor y Cliente dentro del proyecto GuardianBackupVPN.
 
-Instalación WireGuard:
+---
 
-**sudo apt update && sudo apt upgrade -y**
+### Instalación WireGuard
 
-**sudo apt install wireguard -y**
+Ejecuta los siguientes comandos para instalar y actualizar WireGuard en tu sistema:
 
-Comprobamos la instalación:
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install wireguard -y
+```
 
-**sudo systemctl status wg-quick@wg0**
+--- 
 
-**sudo wg show**
+### Comprobar instalación y estado
+
+```bash
+sudo systemctl status wg-quick@wg0
+sudo wg show
+```
+
+---
+
+### Archivo de configuración principal
+
+```bash
+/etc/wireguard/wg0.conf
+```
