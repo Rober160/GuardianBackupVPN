@@ -1,0 +1,11 @@
+[Unit]
+Descripcion=Servicio para ejecutar el script de creacion de repositorios
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/bucle_repositorios.sh
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
