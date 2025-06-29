@@ -1,0 +1,223 @@
+{
+  "name": "EnvioGMAILsolicitudes",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e72b3ac5-3a54-4696-a184-acf2eb3d7d11",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select * from solicitudes order by fecha_solicitud desc limit 1;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        220,
+        0
+      ],
+      "id": "1d0559db-df89-4a91-81f5-369200b8fc06",
+      "name": "Solicitudes",
+      "credentials": {
+        "mySql": {
+          "id": "vnG5xwm7aF7YiKOt",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "399e8598-7a3f-42e7-823c-1d2547296ec3",
+              "leftValue": "={{ $('Solicitudes').item.json.estado }}",
+              "rightValue": "Pendiente",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "2ab2116c-e9f2-4ba6-89b2-43df39406eb5",
+              "leftValue": "={{ $('Solicitudes').item.json.notificado }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        680,
+        0
+      ],
+      "id": "328cde11-3f9b-4f46-a562-576480d1580b",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "sendTo": "robertonegrete421@gmail.com",
+        "subject": "=Solicitud Restauración Backup ({{ $('Solicitudes').item.json.backup_id }})",
+        "emailType": "text",
+        "message": "=Se ha realizado una solicitud de restauración de una copia de seguridad. \nUsuario: {{ $json.usuario }}\nCopia de seguridad con id: {{ $('Solicitudes').item.json.backup_id }}\nFecha: {{ $('Solicitudes').item.json.fecha_solicitud }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        900,
+        -100
+      ],
+      "id": "1f682cfc-0abd-48f8-ab03-9768f4173f15",
+      "name": "Gmail",
+      "webhookId": "d1174bf6-2e51-4886-93bd-c913202fc17d",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "lL1JahIgK4Du7EHv",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select usuario from usuarios where id={{ $json.cliente_id }};",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        440,
+        0
+      ],
+      "id": "87222ddb-7b2a-4b56-b489-ef131853a5ad",
+      "name": "Usuario",
+      "credentials": {
+        "mySql": {
+          "id": "vnG5xwm7aF7YiKOt",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "update solicitudes set notificado=1 where id={{ $('Solicitudes').item.json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        1120,
+        -100
+      ],
+      "id": "0d684f31-23d7-4bb4-a45f-6db05ccea3fa",
+      "name": "MySQL",
+      "credentials": {
+        "mySql": {
+          "id": "vnG5xwm7aF7YiKOt",
+          "name": "MySQL account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Solicitudes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Solicitudes": {
+      "main": [
+        [
+          {
+            "node": "Usuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Usuario": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail": {
+      "main": [
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "cb04ac69-605b-4567-823f-17e89dfac460",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0b47662c568080829ef45ee676f6509d524fdcf6db498b2dc4e23a4c26bbdd41"
+  },
+  "id": "4ISK2UykMQkRnTdE",
+  "tags": []
+}

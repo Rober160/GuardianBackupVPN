@@ -1,0 +1,213 @@
+{
+  "name": "EnvioGMAILBackup",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b7c74026-d6e9-4e71-a685-a9f646b2dd52",
+              "leftValue": "={{ $('Datos').item.json.notificado }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        680,
+        0
+      ],
+      "id": "d4fc5b6b-466c-4a7b-b028-f25206e50b51",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select * from backups order by fecha_backup desc limit 1;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        220,
+        0
+      ],
+      "id": "a5958bac-424f-497f-b314-16391ddf5151",
+      "name": "Datos",
+      "credentials": {
+        "mySql": {
+          "id": "vnG5xwm7aF7YiKOt",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select usuario from usuarios where id={{ $json.cliente_id }};",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        440,
+        0
+      ],
+      "id": "4237b8c1-69f6-4db2-b826-6fd42fa16cc7",
+      "name": "Usuario",
+      "credentials": {
+        "mySql": {
+          "id": "vnG5xwm7aF7YiKOt",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "update backups set notificado=1 where id={{ $('Datos').item.json.id }};",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        1120,
+        -100
+      ],
+      "id": "7c209785-5a59-4cfd-8a1b-622ed97900f7",
+      "name": "MySQL",
+      "credentials": {
+        "mySql": {
+          "id": "vnG5xwm7aF7YiKOt",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "c32a999c-0160-4b7a-8266-178653430e94",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "sendTo": "robertonegrete421@gmail.com",
+        "subject": "=Nuevo Backup {{ $('Datos').item.json.estado }} ({{ $('Datos').item.json.fecha_backup }}) GUARDIANBACKUPVPN",
+        "emailType": "text",
+        "message": "=Nueva Copia de Seguridad realizada por {{ $('Usuario').item.json.usuario }} de {{ $('Datos').item.json.tamano_backup }} ID cliente: {{ $('Datos').item.json.cliente_id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        900,
+        -100
+      ],
+      "id": "d5ab367a-535f-4211-ae30-206fa8a7595c",
+      "name": "Gmail",
+      "webhookId": "befd9d9e-20d6-4441-a971-135447490e15",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "lL1JahIgK4Du7EHv",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datos": {
+      "main": [
+        [
+          {
+            "node": "Usuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Usuario": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Datos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail": {
+      "main": [
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "29f26fd3-2f4f-4754-a26e-5418c0ec03ac",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0b47662c568080829ef45ee676f6509d524fdcf6db498b2dc4e23a4c26bbdd41"
+  },
+  "id": "v5XlZEJTa6jyTRYE",
+  "tags": []
+}
