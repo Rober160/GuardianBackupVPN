@@ -1,4 +1,3 @@
 # PHP
 
-En este directorio encontramos todo el código PHP utilizado tanto para el sitio
-de Administración como para el sitio de los Clientes.
+En este directorio se encuentra todo el código PHP desarrollado para el proyecto, que incluye tanto el sitio de **Administración** como el sitio destinado a los **Clientes**.
