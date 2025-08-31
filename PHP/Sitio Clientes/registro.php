@@ -18,7 +18,7 @@
 				$mensaje = "Error al registrar: " . mysqli_error($conexion);
 			}
 		} else {
-			$mensaje = "❗ Debes introducir una contraseña.";
+			$mensaje = "Debes introducir una contraseña.";
 		}
 	} else {
 		// Cálculo del siguiente nombre disponible
