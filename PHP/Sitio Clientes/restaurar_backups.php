@@ -16,9 +16,9 @@
 		$comentario = trim($_POST["comentario"]);
 
 		if(insertarSolicitud($conexion,$usuario,$backupID,$comentario)) {
-			$mensaje = "✅ Solicitud enviada correctamente. Espera a que el administrador la procese.";
+			$mensaje = "[OK] Solicitud enviada correctamente. Espera a que el administrador la procese.";
 		} else {
-			$mensaje = "❌ Error al registrar la solicitud.";
+			$mensaje = "[X] Error al registrar la solicitud.";
 		}
 	}
 
@@ -38,7 +38,7 @@
 	<h1>Restaurar Backup - <?php echo $usuario;?></h1>
 
 	<nav>
-		<a href="panel.php">⬅️ Volver al Panel</a>
+		<a href="panel.php">Volver al Panel</a>
 	</nav>
 
 	<?php
