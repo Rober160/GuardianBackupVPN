@@ -52,7 +52,7 @@ function listarBackupsUsuario($conexion,$usuario) {
 			echo "<h2>El usuario '$usuario no tiene backups registrados.</h2>";
 		}
 	} else {
-		echo "<div><h2>❌ El usuario '$usuario' no existe.</h2></div>";
+		echo "<div><h2>[X] El usuario '$usuario' no existe.</h2></div>";
 	}
 }
 
@@ -83,7 +83,7 @@ function mostrarUsuarioBaja($conexion,$usuario) {
 		echo "</table>";
 		echo "</form>";
 	} else {
-		echo "<div><h2>❌ No se encontró el usuario '$usuario'.</h2></div>";
+		echo "<div><h2>[X] No se encontró el usuario '$usuario'.</h2></div>";
 	}
 }
 
