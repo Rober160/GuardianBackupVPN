@@ -13,7 +13,7 @@
 		$salida = shell_exec($comando);
 
 		if (!$salida) {
-			echo "❌ El script no devolvió salida.";
+			echo "El script no devolvió salida.";
 			return;
 		}
 
@@ -31,7 +31,7 @@
 		if (!empty($nombreZip)) {
 			completarSolicitud($conexion, $idSolicitud, $nombreZip);
 		} else {
-			echo "❌ Error al obtener el nombre del ZIP para solicitud $idSolicitud";
+			echo "Error al obtener el nombre del ZIP para solicitud $idSolicitud";
 		}
 	}
 
@@ -45,9 +45,9 @@
 	<link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-	<h1>📦 Solicitudes de Restauración</h1>
+	<h1>Solicitudes de Restauración</h1>
 	<nav>
-		<a href="index.php">⬅️ Volver al Panel</a>
+		<a href="index.php">⬅Volver al Panel</a>
 	</nav>
 
 	<?php if (count($solicitudes) > 0) { ?>
@@ -74,7 +74,7 @@
 						<input type="hidden" name="solicitud_id" value="<?php echo $solicitud['id']; ?>">
 						<input type="hidden" name="usuario" value="<?php echo $solicitud['usuario']; ?>">
 						<input type="hidden" name="backup_id" value="<?php echo $solicitud['backup_id']; ?>">
-						<input type="submit" name="completar" value="✅ Restaurar y Completar">
+						<input type="submit" name="completar" value="Restaurar y Completar">
 					</form>
 				</td>
 			</tr>
