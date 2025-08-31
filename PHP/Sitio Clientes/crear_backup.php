@@ -47,7 +47,7 @@
 	<h1>Crear Backup - <?php echo $usuario;?></h1>
 
 	<nav>
-		<a href="panel.php">⬅Volver al Panel</a>
+		<a href="panel.php">Volver al Panel</a>
 	</nav>
 
 	<div><h2>1️⃣  Generar el script para sincronizar tu carpeta al servidor</h2></div>
