@@ -27,16 +27,16 @@ function generarScriptRsync($usuarioWeb, $rutaCliente, $usuarioLocal) {
 
     // Crear clave si no existe
     $contenido .= "if [ ! -f \"\$CLAVE\" ]; then\n";
-    $contenido .= "    echo \"🔑 Generando clave SSH...\"\n";
+    $contenido .= "    echo \"Generando clave SSH...\"\n";
     $contenido .= "    ssh-keygen -t rsa -b 2048 -f \"\$CLAVE\" -N \"\"\n";
     $contenido .= "fi\n\n";
 
     // Copiar clave al servidor
-    $contenido .= "echo \"🔐 Enviando clave pública al servidor (puede pedir contraseña)...\"\n";
+    $contenido .= "echo \"Enviando clave pública al servidor (puede pedir contraseña)...\"\n";
     $contenido .= "ssh-copy-id -i \"\$CLAVE.pub\" rsync-user@clientes.guardianvpn.es\n\n";
 
     // Ejecutar script remoto como sudo con pseudo-terminal (-t)
-    $contenido .= "echo \"🧹 Ejecutando limpieza forzada del directorio remoto con sudo...\"\n";
+    $contenido .= "echo \"Ejecutando limpieza forzada del directorio remoto con sudo...\"\n";
     $contenido .= "ssh -t -i \"\$CLAVE\" rsync-user@clientes.guardianvpn.es \"sudo /usr/local/bin/reset_rsync_dir.sh $usuarioWeb\"\n\n";
 
     // Sincronización con rsync usando la clave
