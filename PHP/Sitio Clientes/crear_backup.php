@@ -28,7 +28,7 @@
 		$resultado = crearBackupRestic($conexion,$usuario);
 
 		if($resultado == true) {
-			$mensaje = "Backup creado correctamente.";
+			$mensaje = "[OK] Backup creado correctamente.";
 		} else {
 			$mensaje = "[X] Error al crear el backup.";
 		}
