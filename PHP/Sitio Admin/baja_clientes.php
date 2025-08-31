@@ -9,9 +9,9 @@
 		$resultado = mysqli_query($conexion,$eliminar);
 
 		if(mysqli_affected_rows($conexion) == 1) {
-			$mensaje = "✅ Usuario eliminado correctamente.";
+			$mensaje = "[OK] Usuario eliminado correctamente.";
 		} else {
-			$mensaje = "❌ Error al eliminar el usuario.";
+			$mensaje = "[X] Error al eliminar el usuario.";
 		}
 	}
 
