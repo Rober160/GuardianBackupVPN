@@ -31,7 +31,7 @@
 		if (!empty($nombreZip)) {
 			completarSolicitud($conexion, $idSolicitud, $nombreZip);
 		} else {
-			echo "Error al obtener el nombre del ZIP para solicitud $idSolicitud";
+			echo "[X] Error al obtener el nombre del ZIP para solicitud $idSolicitud";
 		}
 	}
 
