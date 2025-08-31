@@ -28,9 +28,9 @@
 		$resultado = crearBackupRestic($conexion,$usuario);
 
 		if($resultado == true) {
-			$mensaje = "✅ Backup creado correctamente.";
+			$mensaje = "Backup creado correctamente.";
 		} else {
-			$mensaje = "❌ Error al crear el backup.";
+			$mensaje = "Error al crear el backup.";
 		}
 	}
 ?>
@@ -47,7 +47,7 @@
 	<h1>Crear Backup - <?php echo $usuario;?></h1>
 
 	<nav>
-		<a href="panel.php">⬅️ Volver al Panel</a>
+		<a href="panel.php">⬅Volver al Panel</a>
 	</nav>
 
 	<div><h2>1️⃣  Generar el script para sincronizar tu carpeta al servidor</h2></div>
