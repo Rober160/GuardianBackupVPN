@@ -42,7 +42,7 @@ function generarScriptRsync($usuarioWeb, $rutaCliente, $usuarioLocal) {
     // Sincronización con rsync usando la clave
     $contenido .= "echo \"🚀 Enviando archivos al servidor...\"\n";
     $contenido .= "rsync -av --progress -e \"ssh -i \$CLAVE -o StrictHostKeyChecking=no\" \"\$ORIGEN/\" \"\$DESTINO\"\n";
-    $contenido .= "echo \"✅ Sincronización completada. Vuelve a la web para lanzar el backup.\"\n";
+    $contenido .= "echo \"[OK] Sincronización completada. Vuelve a la web para lanzar el backup.\"\n";
 
     // Guardar y preparar el script
     file_put_contents($rutaScript, $contenido);
@@ -141,7 +141,7 @@ function mostrarBackups($conexion,$usuario) {
 			echo "<div><p>No tienes backups registrados aún.</p></div>";
 		}
 	} else {
-		echo "<div><p>❌ Error: no se encontró tu usuario en la base de datos.</p></div>";
+		echo "<div><p>[X] Error: no se encontró tu usuario en la base de datos.</p></div>";
 	}
 }
 
