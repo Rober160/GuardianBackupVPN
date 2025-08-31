@@ -21,9 +21,9 @@
 </head>
 
 <body>
-	<h1>📦 Backups Restaurados - <?php echo $usuario;?></h1>
+	<h1>Backups Restaurados - <?php echo $usuario;?></h1>
 	<nav>
-		<a href="panel.php">⬅️ Volver al Panel</a>
+		<a href="panel.php">Volver al Panel</a>
 	</nav>
 
 	<?php if(!empty($restauraciones)) { ?>
@@ -46,9 +46,9 @@
 				echo "<td>" . $fila["fecha_solicitud"] . "</td>";
 				echo "<td>" . $fila["backup_id"] . "</td>";
 				if(!empty($nombre_zip) && ($ahora - $fechaSolicitud) <= $diasLimite && file_exists($ruta_absoluta)) {
-					echo "<td><a href='" . $ruta_relativa . "' target='_blank'>📥 Descargar Backup</a></td>";
+					echo "<td><a href='" . $ruta_relativa . "' target='_blank'>Descargar Backup</a></td>";
 				} else {
-					echo "<td>⛔ Enlace caducado</td>";
+					echo "<td>Enlace caducado</td>";
 				}
 			echo "</tr>";
 		}
