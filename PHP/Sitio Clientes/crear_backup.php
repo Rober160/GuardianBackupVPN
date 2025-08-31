@@ -77,7 +77,7 @@
 
 	<?php if($mostrarEnlace == true) { ?>
 		<div>
-			<p>✅ Script generado correctamente. Descárgalo aquí: </p>
+			<p>[OK] Script generado correctamente. Descárgalo aquí: </p>
 			<a href="descargas/<?php echo $nombreScript; ?>" download><?php echo $nombreScript; ?></a>
 		</div>
 
