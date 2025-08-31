@@ -21,7 +21,7 @@
 				$mensaje = "Datos incorrectos";
 			}
 		} else {
-			$mensaje = "❗ Debes rellenar todos los campos.";
+			$mensaje = "Debes rellenar todos los campos.";
 		}
 	}
 ?>
