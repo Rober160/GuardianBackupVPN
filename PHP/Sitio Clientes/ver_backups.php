@@ -23,7 +23,7 @@
 	<h1>Mis Backups</h1>
 
 	<nav>
-		<a href="panel.php">⬅️ Volver al Panel</a>
+		<a href="panel.php">Volver al Panel</a>
 	</nav>
 
 	<div>
