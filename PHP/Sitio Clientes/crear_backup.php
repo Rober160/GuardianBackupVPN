@@ -30,7 +30,7 @@
 		if($resultado == true) {
 			$mensaje = "Backup creado correctamente.";
 		} else {
-			$mensaje = "Error al crear el backup.";
+			$mensaje = "[X] Error al crear el backup.";
 		}
 	}
 ?>
